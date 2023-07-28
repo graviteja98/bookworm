@@ -26,6 +26,7 @@ const PageLoader = (props) => {
             whiteSpace: "pre",
             letterSpacing: `${letterSpacing}px`,
             fontSize: "2rem",
+            fontWeight : 600
           }}
           variants={variants}
           initial="initial"

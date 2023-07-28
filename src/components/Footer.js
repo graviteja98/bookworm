@@ -1,13 +1,13 @@
 import React from 'react';
-import { Typography, List,  ListItemText, ListItemButton, IconButton } from '@mui/material';
+import { Typography, List,  ListItemText, ListItemButton,Box } from '@mui/material';
 
-import CampaignIcon from '@mui/icons-material/Campaign';
+
 
 const Footer = () => {
 
   return (
     <>
-      <footer  style={{ display: 'flex', justifyContent: 'space-around', backgroundColor : 'whitesmoke' }}>
+      <Box  style={{ display: 'flex', justifyContent: 'space-around', backgroundColor : 'whitesmoke', mt: 10 }}>
         <div>
           <Typography variant="h6" gutterBottom>
             Contact Us
@@ -42,13 +42,7 @@ const Footer = () => {
           </Typography>
           <Typography variant="body2">Aliquam et metus pharetra, bibendum massa nec, ultrices velit. Nulla facilisi.</Typography>
         </div>
-      </footer>
-      <div className="footer-line" style={{ borderTop: '1px solid #ccc', marginTop: '16px' }}></div>
-      <footer className="footer2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <IconButton onClick={()=>{console.log('hey')}}>
-   <CampaignIcon/>
-        </IconButton>
-      </footer>
+      </Box>
     </>
   );
 };

@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Link, ListItemButton, ListItemIcon, Stack, Typography } from "@mui/material";
 import { Outlet, useNavigate } from "react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence,  motion } from "framer-motion";
 import { Cross as Hamburger } from "hamburger-react";
 import { wait } from "@testing-library/user-event/dist/utils";
 import PageLoader from "./PageLoader";
 import LoadingSimple from "./LoadingSimple";
+import { Facebook, Instagram, Mail, Twitter } from "@mui/icons-material";
 const NavBar = () => {
   const items = ["Home", "Portfolio", "Blog", "About", "Contact"];
   const navigate = useNavigate();
   const [state, setState] = useState(false);
   const [naving, setNaving] = useState(false);
   const [Letter, setLetter] = useState('H');
+  const [navPage,setNavPage] = useState('')
   const animationVariants = {
     start: {
       y: "-100vh",
@@ -29,6 +31,21 @@ const NavBar = () => {
       transition: { duration: 0.5, ease: "easeOut" },
     },
   };
+  const textVariants = {
+    ...animationVariants,
+    start : {
+      ...animationVariants.start
+    },
+     end : {
+      ...animationVariants.end,
+      transition : {duration : 1, ease : 'easeOut', dealy : 1}
+     },
+     exit: {
+      opacity: 0,
+      y: "-100vh",
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  }
   useEffect(() => {
     setTimeout(() => {
       setNaving(false);
@@ -54,6 +71,12 @@ const NavBar = () => {
             >
               <Grid container>
                 <Grid item lg={2}>
+                  <motion.div
+                 initial="start"
+                 animate="end"
+                 exit="exit"
+                 variants={textVariants}
+                  >
                   <Stack direction={"column"} spacing={6}>
                     {items.map((item) => (
                       <Button
@@ -63,6 +86,7 @@ const NavBar = () => {
                           navigate(`${item.toLowerCase()}`);
                           setState(false);
                           setNaving(true);
+                          setNavPage(item)
                         }}
                         onMouseEnter={()=>{
                           setLetter(item.charAt(0).toUpperCase());
@@ -80,6 +104,7 @@ const NavBar = () => {
                       </Button>
                     ))}
                   </Stack>
+                  </motion.div>
                 </Grid>
                 <Grid item lg={8}>
                   <Box
@@ -93,20 +118,57 @@ const NavBar = () => {
                     <LoadingSimple Letter={Letter}/>
                   </Box>
                 </Grid>
+                <Grid item lg={2}>
+                  <motion.div
+            
+                   initial="start"
+                   animate="end"
+                   exit="exit"
+                   variants={animationVariants}
+                 >
+                <Stack direction={'column'} sx={{width : '10%', color : 'white'}} >
+            <ListItemButton component={Link} href="https://www.facebook.com">
+              <ListItemIcon>
+                <Facebook sx={{ color : 'white'}} fontSize="large" />
+              </ListItemIcon>
+            </ListItemButton>
+            <ListItemButton component={Link} href="https://www.instagram.com">
+              <ListItemIcon>
+                <Instagram sx={{ color : 'white'}} fontSize="large"/>
+              </ListItemIcon>
+ 
+            </ListItemButton>
+            <ListItemButton component={Link} href="mailto:example@gmail.com">
+              <ListItemIcon>
+                <Mail sx={{ color : 'white'}} fontSize="large" />
+              </ListItemIcon>
+
+            </ListItemButton>
+            <ListItemButton component={Link} href="https://www.twitter.com">
+              <ListItemIcon>
+                <Twitter sx={{ color : 'white'}} fontSize="large" />
+              </ListItemIcon>
+            </ListItemButton>
+          </Stack></motion.div>
+                </Grid>
               </Grid>
             </Box>
           </motion.div>
         ) : naving ? (
           <motion.div
+          style={{
+            backgroundColor : 'lightcyan'
+          }}
             initial="start"
             animate="end"
             exit="exit"
             variants={animationVariants}
           >
-            <PageLoader title="New Page" />
+            <PageLoader title={navPage} />
           </motion.div>
         ) : null}
       </AnimatePresence>
+      
       <AnimatePresence mode={wait}>
         <Container
           sx={{
@@ -133,7 +195,31 @@ const NavBar = () => {
             </motion.div>
           )}
           <Hamburger toggled={state} duration={0.6} toggle={setState} />
-          {!state && <Typography variant="h6">Follow Us!</Typography>}
+          {!state && <>
+            <Stack direction={'row'} sx={{width : '10%'}} >
+            <ListItemButton component={Link} href="https://www.facebook.com">
+              <ListItemIcon>
+                <Facebook />
+              </ListItemIcon>
+            </ListItemButton>
+            <ListItemButton component={Link} href="https://www.instagram.com">
+              <ListItemIcon>
+                <Instagram />
+              </ListItemIcon>
+ 
+            </ListItemButton>
+            <ListItemButton component={Link} href="mailto:example@gmail.com">
+              <ListItemIcon>
+                <Mail />
+              </ListItemIcon>
+
+            </ListItemButton>
+            <ListItemButton component={Link} href="https://www.twitter.com">
+              <ListItemIcon>
+                <Twitter />
+              </ListItemIcon>
+            </ListItemButton>
+          </Stack></>}
         </Container>
       </AnimatePresence>
       <AnimatePresence>

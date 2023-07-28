@@ -1,7 +1,7 @@
 import React from 'react';
 import Appbar from './components/Appbar';
 import myTheme from './theme';
-import { Route, Routes, BrowserRouter as Router, Outlet } from 'react-router-dom'; // Make sure to use BrowserRouter as Router
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'; // Make sure to use BrowserRouter as Router
 import { Suspense, lazy } from 'react';
 import Loading from './components/Loading';
 import { ThemeProvider } from '@emotion/react';

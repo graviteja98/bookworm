@@ -21,7 +21,7 @@ const About = () => {
         <motion.div
       initial={{ scale: 0 }} // Initial scale set to 0 (completely scaled down)
       animate={{ scale: 1 }} // Animation to increase scale to 1 (original size)
-      transition={{ duration: 0.4 }} // Duration of the scaling animation (in seconds)
+      transition={{ duration: 1, dealy : 1 }} // Duration of the scaling animation (in seconds)
       // style={{
       //   width: 100,
       //   height: 100,
