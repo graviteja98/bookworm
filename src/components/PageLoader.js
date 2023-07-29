@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const PageLoader = (props) => {
-  const text = props.title;
+  const text = props.title || 'New Page';
   const letterSpacing = 8;
 
   const variants = {
@@ -17,7 +17,7 @@ const PageLoader = (props) => {
   };
 
   return (
-    <motion.div style={{ width: "100%", height: 400, overflow: "hidden", display : 'flex', justifyContent : 'center', alignItems : 'center' }}>
+    <motion.div style={{ width: "100%", height: 600, overflow: "hidden", display : 'flex', justifyContent : 'center', alignItems : 'center' }}>
       {text.split("").map((letter, index) => (
         <motion.span
           key={index}

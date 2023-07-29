@@ -99,7 +99,7 @@ const Portfolio = () => {
         <motion.div
           style={{ gridColumn: '1 / span 2' }}
           initial="hidden"
-          animate={y.current >= '45%' ? 'visible' : 'hidden'}
+          animate={y.current >= '44%' ? 'visible' : 'hidden'}
           variants={rowVariants}
         >
           <img src="https://images.unsplash.com/photo-1526285759904-71d1170ed2ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="" style={{ width: '100%', height: '100%', borderRadius: '8px' }} />
@@ -108,7 +108,7 @@ const Portfolio = () => {
         <motion.div
           style={{ gridColumn: '3 / span 2' }}
           initial="hidden"
-          animate={y.current >= '45%' ? 'visible' : 'hidden'}
+          animate={y.current >= '44%' ? 'visible' : 'hidden'}
           variants={rowVariants}
         >
           <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1129&q=80" alt="" style={{ width: '100%', height: '100%', borderRadius: '8px' }} />
